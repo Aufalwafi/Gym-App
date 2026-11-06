@@ -286,6 +286,7 @@
             timerSeconds: 90,
             timerRunning: false,
             timerInterval: null,
+            wakeLock: null,
             catalog: {!! json_encode($allExercises) !!},
             exercises: {!! json_encode($preloadedExercises) !!},
 
@@ -294,9 +295,28 @@
                 this.exercises.forEach(ex => {
                     ex.sets.forEach(s => this.calculate1rm(s));
                 });
+                
+                // Hardware Wake Lock: Jaga layar smartphone tetap menyala selama sesi latihan
+                this.requestWakeLock();
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        this.requestWakeLock();
+                    }
+                });
+
                 this.$nextTick(() => {
                     if (window.lucide) window.lucide.createIcons();
                 });
+            },
+
+            async requestWakeLock() {
+                try {
+                    if ('wakeLock' in navigator) {
+                        this.wakeLock = await navigator.wakeLock.request('screen');
+                    }
+                } catch (err) {
+                    console.log('Screen Wake Lock inactive:', err);
+                }
             },
 
             get filteredCatalog() {
@@ -406,6 +426,17 @@
             },
 
             playTimerDing() {
+                // 1. Interaksi Hardware Haptic (Vibration API Smartphone)
+                if ('vibrate' in navigator) {
+                    try {
+                        // Pola getar smartphone saat istirahat selesai: getar 250ms, jeda 100ms, getar 250ms, jeda 100ms, getar 500ms
+                        navigator.vibrate([250, 100, 250, 100, 500]);
+                    } catch (e) {
+                        console.log('Vibration not supported/permitted');
+                    }
+                }
+
+                // 2. Interaksi Hardware Speaker (Web Audio API Synthesizer)
                 try {
                     const ctx = new (window.AudioContext || window.webkitAudioContext)();
                     const osc = ctx.createOscillator();
