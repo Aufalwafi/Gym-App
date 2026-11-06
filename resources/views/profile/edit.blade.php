@@ -12,9 +12,9 @@
     </div>
 
     <!-- Section 1: Personal & Fitness Information -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6">
         <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+            <div class="w-10 h-10 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center font-bold">
                 <i data-lucide="user-check" class="w-5 h-5"></i>
             </div>
             <div>
@@ -31,13 +31,13 @@
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Nama Lengkap</label>
                     <input type="text" name="name" value="{{ old('name', $user->name) }}" required
-                           class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500">
+                           class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-green-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Email</label>
                     <input type="email" name="email" value="{{ old('email', $user->email) }}" required
-                           class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-emerald-500">
+                           class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 focus:outline-none focus:border-green-500">
                 </div>
             </div>
 
@@ -100,7 +100,7 @@
             </div>
 
             <div class="pt-4 flex justify-end">
-                <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all">
+                <button type="submit" class="px-5 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs transition-colors">
                     Simpan Perubahan Profil
                 </button>
             </div>
@@ -108,7 +108,7 @@
     </div>
 
     <!-- Section 2: Change Password -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6">
         <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
             <div class="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center font-bold">
                 <i data-lucide="lock" class="w-5 h-5"></i>

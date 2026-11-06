@@ -26,10 +26,10 @@
     </div>
 
     <!-- Session Header Card -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-                <div class="flex items-center gap-2 text-xs font-semibold text-emerald-400 mb-1">
+                <div class="flex items-center gap-2 text-xs font-semibold text-green-500 mb-1">
                     <i data-lucide="calendar" class="w-4 h-4"></i>
                     <span>{{ \Carbon\Carbon::parse($session->started_at)->translatedFormat('l, d F Y &bull; H:i') }} WIB</span>
                 </div>
@@ -39,7 +39,7 @@
                 @endif
             </div>
 
-            <div class="flex items-center gap-4 bg-zinc-950 border border-zinc-800/80 rounded-2xl p-4 shrink-0">
+            <div class="flex items-center gap-4 bg-zinc-950 border border-zinc-800 rounded-xl p-4 shrink-0">
                 <div class="text-center px-2">
                     <span class="text-[10px] uppercase font-bold text-zinc-500 block">Durasi</span>
                     <span class="text-lg font-extrabold text-white">{{ $session->duration_minutes }} <span class="text-xs font-normal text-zinc-400">m</span></span>
@@ -47,7 +47,7 @@
                 <div class="w-px h-8 bg-zinc-800"></div>
                 <div class="text-center px-2">
                     <span class="text-[10px] uppercase font-bold text-zinc-500 block">Total Volume</span>
-                    <span class="text-lg font-extrabold text-emerald-400">{{ number_format($session->total_volume_kg, 0, ',', '.') }} <span class="text-xs font-normal text-zinc-400">kg</span></span>
+                    <span class="text-lg font-extrabold text-green-500">{{ number_format($session->total_volume_kg, 0, ',', '.') }} <span class="text-xs font-normal text-zinc-400">kg</span></span>
                 </div>
                 <div class="w-px h-8 bg-zinc-800"></div>
                 <div class="text-center px-2">
@@ -58,7 +58,7 @@
         </div>
 
         @if($session->notes)
-            <div class="pt-3 border-t border-zinc-800 text-xs text-zinc-300 bg-zinc-950/40 p-3 rounded-xl">
+            <div class="pt-3 border-t border-zinc-800 text-xs text-zinc-300 bg-zinc-950 p-3 rounded-lg">
                 <span class="font-bold text-zinc-400">Catatan:</span> {{ $session->notes }}
             </div>
         @endif
@@ -67,20 +67,20 @@
     <!-- Exercises & Sets Breakdown -->
     <div class="space-y-4">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-            <i data-lucide="dumbbell" class="w-5 h-5 text-emerald-400"></i> Rincian Gerakan & Angkatan
+            <i data-lucide="dumbbell" class="w-5 h-5 text-green-500"></i> Rincian Gerakan & Angkatan
         </h2>
 
         @foreach($groupedSets as $exerciseId => $sets)
             @php $firstSet = $sets->first(); $exercise = $firstSet->exercise; @endphp
-            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 space-y-3">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 space-y-3">
                 <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
                     <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 rounded-xl bg-zinc-800 flex items-center justify-center text-emerald-400 font-bold text-xs">
+                        <div class="w-9 h-9 rounded-lg bg-zinc-800 flex items-center justify-center text-green-500 font-bold text-xs">
                             <i data-lucide="activity" class="w-5 h-5"></i>
                         </div>
                         <div>
                             <h3 class="font-bold text-white text-base">
-                                <a href="{{ route('exercises.show', $exercise->id) }}" class="hover:text-emerald-400 transition-colors">
+                                <a href="{{ route('exercises.show', $exercise->id) }}" class="hover:text-green-400 transition-colors">
                                     {{ $exercise->name }}
                                 </a>
                             </h3>
@@ -125,7 +125,7 @@
                                             -
                                         @endif
                                     </td>
-                                    <td class="py-2.5 px-3 font-mono font-bold text-emerald-400">
+                                    <td class="py-2.5 px-3 font-mono font-bold text-green-500">
                                         {{ $set->estimated_1rm ? $set->estimated_1rm . ' kg' : '-' }}
                                     </td>
                                     <td class="py-2.5 px-3 text-right font-medium text-zinc-300">

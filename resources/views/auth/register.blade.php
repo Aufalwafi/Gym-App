@@ -16,15 +16,15 @@
     <div class="w-full max-w-lg">
         <!-- Logo & Header -->
         <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 text-white shadow-xl shadow-emerald-500/25 mb-3">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-green-600 text-white mb-3">
                 <i data-lucide="dumbbell" class="w-7 h-7"></i>
             </div>
-            <h1 class="text-3xl font-extrabold tracking-tight text-white">Mulai di Fit<span class="text-emerald-400">Track</span></h1>
+            <h1 class="text-3xl font-extrabold tracking-tight text-white">Mulai di Fit<span class="text-green-500">Track</span></h1>
             <p class="text-zinc-400 text-sm mt-1">Daftarkan akun dan mulai catat latihan gym & target fisik Anda</p>
         </div>
 
         @if($errors->any())
-            <div class="mb-4 p-4 rounded-xl bg-rose-950/70 border border-rose-500/40 text-rose-300 text-sm">
+            <div class="mb-4 p-4 rounded-xl bg-rose-950 border border-rose-800 text-rose-300 text-sm">
                 <div class="flex items-center gap-2 font-semibold mb-1">
                     <i data-lucide="alert-circle" class="w-4 h-4 text-rose-400"></i> Periksa kembali isian Anda:
                 </div>
@@ -36,7 +36,7 @@
             </div>
         @endif
 
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 sm:p-8 shadow-2xl backdrop-blur-sm">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8">
             <form action="{{ route('register') }}" method="POST" class="space-y-4">
                 @csrf
 
@@ -45,38 +45,38 @@
                     <div class="sm:col-span-2">
                         <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Nama Lengkap</label>
                         <input type="text" name="name" value="{{ old('name') }}" required placeholder="Contoh: Budi Santoso"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500">
                     </div>
 
                     <div class="sm:col-span-2">
                         <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Email</label>
                         <input type="email" name="email" value="{{ old('email') }}" required placeholder="nama@email.com"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500">
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Password</label>
                         <input type="password" name="password" required placeholder="Minimal 8 karakter"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500">
                     </div>
 
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Konfirmasi Password</label>
                         <input type="password" name="password_confirmation" required placeholder="Ulangi password"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500">
                     </div>
                 </div>
 
                 <!-- Fitness Profile (Optional / Initial) -->
                 <div class="pt-4 border-t border-zinc-800">
-                    <p class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3 flex items-center gap-1.5">
+                    <p class="text-xs font-bold uppercase tracking-wider text-green-500 mb-3 flex items-center gap-1.5">
                         <i data-lucide="activity" class="w-4 h-4"></i> Data Fisik Awal (Opsional)
                     </p>
 
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Jenis Kelamin</label>
-                            <select name="gender" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                            <select name="gender" class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                                 <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Pria</option>
                                 <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>Wanita</option>
                             </select>
@@ -84,26 +84,26 @@
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Usia (Tahun)</label>
                             <input type="number" name="age" value="{{ old('age', 21) }}" min="12" max="100"
-                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                         </div>
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Tinggi (cm)</label>
                             <input type="number" step="0.5" name="height_cm" value="{{ old('height_cm', 170) }}" min="100" max="250"
-                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                         </div>
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Berat Saat Ini (kg)</label>
                             <input type="number" step="0.1" name="initial_weight_kg" value="{{ old('initial_weight_kg', 65) }}" min="30" max="300"
-                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                         </div>
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Target Berat (kg)</label>
                             <input type="number" step="0.1" name="target_weight_kg" value="{{ old('target_weight_kg', 70) }}" min="30" max="300"
-                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                                   class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                         </div>
                         <div>
                             <label class="block text-[11px] font-medium text-zinc-400 mb-1">Tujuan Fitness</label>
-                            <select name="fitness_goal" class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
+                            <select name="fitness_goal" class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
                                 <option value="bulking" {{ old('fitness_goal') == 'bulking' ? 'selected' : '' }}>Bulking (Massa Otot)</option>
                                 <option value="cutting" {{ old('fitness_goal') == 'cutting' ? 'selected' : '' }}>Cutting (Bakar Lemak)</option>
                                 <option value="maintenance" {{ old('fitness_goal') == 'maintenance' ? 'selected' : '' }}>Maintenance (Pertahankan)</option>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/25 transition-all hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-4">
+                <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-sm transition-colors flex items-center justify-center gap-2 mt-4">
                     <i data-lucide="user-plus" class="w-4 h-4"></i> Buat Akun & Mulai
                 </button>
             </form>
@@ -120,7 +120,7 @@
 
         <p class="text-center text-sm text-zinc-400 mt-6">
             Sudah memiliki akun?
-            <a href="{{ route('login') }}" class="font-semibold text-emerald-400 hover:text-emerald-300 underline underline-offset-4">Masuk di sini</a>
+            <a href="{{ route('login') }}" class="font-semibold text-green-500 hover:text-green-400 underline underline-offset-4">Masuk di sini</a>
         </p>
     </div>
 

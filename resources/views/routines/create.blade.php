@@ -137,15 +137,15 @@
             <a href="{{ route('routines.index') }}" class="px-5 py-2.5 rounded-xl bg-zinc-800 text-zinc-300 font-semibold text-xs">
                 Batal
             </a>
-            <button type="submit" :disabled="routineExercises.length === 0" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 disabled:opacity-50 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all">
+            <button type="submit" :disabled="routineExercises.length === 0" class="px-5 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 disabled:opacity-50 text-white font-medium text-xs transition-colors">
                 Simpan Program Latihan
             </button>
         </div>
     </form>
 
     <!-- Modal Exercise Picker -->
-    <div x-show="openModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-lg max-h-[80vh] flex flex-col shadow-2xl" @click.outside="openModal = false">
+    <div x-show="openModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-lg max-h-[80vh] flex flex-col shadow-xl" @click.outside="openModal = false">
             <div class="p-4 border-b border-zinc-800 flex items-center justify-between">
                 <h3 class="font-bold text-white text-base">Pilih Gerakan</h3>
                 <button type="button" @click="openModal = false" class="text-zinc-500 hover:text-white">
@@ -153,19 +153,19 @@
                 </button>
             </div>
 
-            <div class="p-3 border-b border-zinc-800 bg-zinc-950/40">
+            <div class="p-3 border-b border-zinc-800 bg-zinc-950">
                 <input type="text" x-model="search" placeholder="Cari gerakan..."
-                       class="w-full bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                       class="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-green-500">
             </div>
 
-            <div class="overflow-y-auto p-3 space-y-1.5 flex-1 divide-y divide-zinc-800/40">
+            <div class="overflow-y-auto p-3 space-y-1.5 flex-1 divide-y divide-zinc-800">
                 <template x-for="item in filteredCatalog" :key="item.id">
-                    <div class="pt-2 pb-2 flex items-center justify-between hover:bg-zinc-800/50 p-2 rounded-xl cursor-pointer" @click="addExercise(item)">
+                    <div class="pt-2 pb-2 flex items-center justify-between hover:bg-zinc-800/50 p-2 rounded-lg cursor-pointer" @click="addExercise(item)">
                         <div>
                             <p class="font-bold text-white text-xs" x-text="item.name"></p>
                             <p class="text-[10px] text-zinc-400" x-text="(item.category ? item.category.name : '') + ' &bull; ' + item.equipment"></p>
                         </div>
-                        <span class="text-emerald-400 text-xs font-bold">+ Tambah</span>
+                        <span class="text-green-500 text-xs font-medium">+ Tambah</span>
                     </div>
                 </template>
             </div>

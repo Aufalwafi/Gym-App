@@ -12,24 +12,24 @@
             <p class="text-zinc-400 text-xs sm:text-sm">Ensiklopedia gerakan gym berdasarkan kelompok otot, alat, dan instruksi bentuk gerakan.</p>
         </div>
 
-        <a href="{{ route('exercises.create') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-emerald-400 font-bold text-xs uppercase tracking-wider border border-zinc-700 transition-all">
-            <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Gerakan Kustom
+        <a href="{{ route('exercises.create') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-green-500 font-medium text-xs border border-zinc-700 transition-colors">
+            <i data-lucide="plus" class="w-4 h-4"></i> Tambah Gerakan Kustom
         </a>
     </div>
 
     <!-- Filters & Search Bar -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 sm:p-5 space-y-4 shadow-md">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 space-y-4">
         <!-- Muscle Category Pills -->
         <div class="flex flex-wrap gap-2">
             <a href="{{ route('exercises.index', array_merge(request()->except('category', 'page'))) }}"
-               class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors {{ !request('category') ? 'bg-emerald-500 text-zinc-950 font-bold' : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700' }}">
+               class="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors {{ !request('category') ? 'bg-green-600 text-white' : 'bg-zinc-800 text-zinc-400 hover:text-white hover:bg-zinc-700' }}">
                 Semua Otot
             </a>
             @foreach($categories as $cat)
                 <a href="{{ route('exercises.index', array_merge(request()->except('page'), ['category' => $cat->slug])) }}"
-                   class="px-3 py-1.5 rounded-xl text-xs font-semibold transition-colors flex items-center gap-1.5 {{ request('category') === $cat->slug ? 'bg-emerald-500 text-zinc-950 font-bold' : 'bg-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-700' }}">
+                   class="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors flex items-center gap-1.5 {{ request('category') === $cat->slug ? 'bg-green-600 text-white' : 'bg-zinc-800 text-zinc-300 hover:text-white hover:bg-zinc-700' }}">
                     <span>{{ $cat->name }}</span>
-                    <span class="text-[10px] px-1.5 py-0.2 rounded-full {{ request('category') === $cat->slug ? 'bg-zinc-950/20 text-zinc-950' : 'bg-zinc-900 text-zinc-500' }}">{{ $cat->exercises_count }}</span>
+                    <span class="text-[10px] px-1.5 py-0.2 rounded-full {{ request('category') === $cat->slug ? 'bg-zinc-950/20 text-white' : 'bg-zinc-900 text-zinc-500' }}">{{ $cat->exercises_count }}</span>
                 </a>
             @endforeach
         </div>
@@ -66,18 +66,18 @@
     <!-- Exercises Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @forelse($exercises as $exercise)
-            <div class="bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-2xl p-5 flex flex-col justify-between transition-all group shadow-md">
+            <div class="bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 flex flex-col justify-between transition-colors group">
                 <div>
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800 text-emerald-400 border border-zinc-700">
+                        <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
                             {{ $exercise->category->name ?? 'Gym' }}
                         </span>
-                        <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded {{ $exercise->difficulty === 'advanced' ? 'bg-rose-500/10 text-rose-400' : ($exercise->difficulty === 'intermediate' ? 'bg-amber-500/10 text-amber-400' : 'bg-emerald-500/10 text-emerald-400') }}">
+                        <span class="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded {{ $exercise->difficulty === 'advanced' ? 'bg-rose-500/10 text-rose-400' : ($exercise->difficulty === 'intermediate' ? 'bg-amber-500/10 text-amber-400' : 'bg-green-500/10 text-green-400') }}">
                             {{ $exercise->difficulty }}
                         </span>
                     </div>
 
-                    <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">
+                    <h3 class="text-base font-bold text-white group-hover:text-green-400 transition-colors">
                         <a href="{{ route('exercises.show', $exercise->id) }}">{{ $exercise->name }}</a>
                     </h3>
 
@@ -98,16 +98,16 @@
 
                 <div class="mt-4 pt-3 border-t border-zinc-800 flex items-center justify-between text-xs">
                     <span class="text-zinc-500 font-medium">Bentuk Gerakan</span>
-                    <a href="{{ route('exercises.show', $exercise->id) }}" class="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center gap-1">
+                    <a href="{{ route('exercises.show', $exercise->id) }}" class="text-green-500 hover:text-green-400 font-medium flex items-center gap-1">
                         Lihat Panduan & Rekor <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                     </a>
                 </div>
             </div>
         @empty
-            <div class="col-span-3 bg-zinc-900/40 border border-dashed border-zinc-800 rounded-2xl p-12 text-center space-y-2">
+            <div class="col-span-3 bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-10 text-center space-y-2">
                 <i data-lucide="search-x" class="w-8 h-8 text-zinc-600 mx-auto"></i>
                 <p class="text-zinc-400 font-semibold text-sm">Tidak ditemukan gerakan dengan filter tersebut</p>
-                <a href="{{ route('exercises.index') }}" class="text-emerald-400 text-xs underline">Reset filter pencarian</a>
+                <a href="{{ route('exercises.index') }}" class="text-green-500 text-xs underline">Reset filter pencarian</a>
             </div>
         @endforelse
     </div>

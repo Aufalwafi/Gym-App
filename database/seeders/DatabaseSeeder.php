@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         $user = User::updateOrCreate(
             ['email' => 'admin@fittrack.local'],
             [
-                'name' => 'Demo User (FitBro)',
+                'name' => 'Aufal Wafi',
                 'password' => Hash::make('password123'),
                 'gender' => 'male',
                 'age' => 22,

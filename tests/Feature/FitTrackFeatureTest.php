@@ -42,7 +42,7 @@ class FitTrackFeatureTest extends TestCase
         $user = User::first();
         $response = $this->actingAs($user)->get('/dashboard');
         $response->assertStatus(200);
-        $response->assertSee('Semangat Latihan');
+        $response->assertSee('Total latihan minggu ini');
     }
 
     public function test_authenticated_user_can_view_workouts(): void

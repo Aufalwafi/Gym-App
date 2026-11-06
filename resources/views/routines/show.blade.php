@@ -32,7 +32,7 @@
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
                 <div class="flex items-center gap-2 mb-2">
-                    <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <span class="text-xs font-medium uppercase tracking-wider px-2.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">
                         {{ $routine->target_split ?? 'Program Latihan' }}
                     </span>
                     @if($routine->day_schedule)
@@ -43,7 +43,7 @@
                 <p class="text-zinc-400 text-sm mt-1 max-w-xl">{{ $routine->description ?? 'Program terstruktur untuk progres latihan konsisten.' }}</p>
             </div>
 
-            <a href="{{ route('workouts.create', ['routine_id' => $routine->id]) }}" class="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-black text-sm shadow-xl shadow-emerald-500/25 transition-all hover:scale-105 shrink-0">
+            <a href="{{ route('workouts.create', ['routine_id' => $routine->id]) }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-sm transition-colors shrink-0">
                 <i data-lucide="play" class="w-4 h-4 fill-current"></i> Mulai Sesi Sekarang
             </a>
         </div>
@@ -52,13 +52,13 @@
     <!-- Exercises List -->
     <div class="space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
-            <i data-lucide="list-checks" class="w-5 h-5 text-emerald-400"></i> Susunan Gerakan ({{ $routine->routineExercises->count() }} Latihan)
+            <i data-lucide="list-checks" class="w-5 h-5 text-green-500"></i> Susunan Gerakan ({{ $routine->routineExercises->count() }} Latihan)
         </h2>
 
         @foreach($routine->routineExercises as $index => $re)
-            <div class="bg-zinc-900/80 border border-zinc-800 rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-md">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div class="flex items-center gap-4">
-                    <span class="w-9 h-9 rounded-xl bg-zinc-800 text-emerald-400 font-black text-sm flex items-center justify-center shrink-0">
+                    <span class="w-9 h-9 rounded-lg bg-zinc-800 text-green-500 font-bold text-sm flex items-center justify-center shrink-0">
                         {{ $index + 1 }}
                     </span>
                     <div>

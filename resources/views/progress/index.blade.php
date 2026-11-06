@@ -14,10 +14,10 @@
     </div>
 
     <!-- Weight Trend Chart (Full width) -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-4">
         <div class="flex items-center justify-between">
             <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400"></i> Grafik Perkembangan Berat Badan
+                <i data-lucide="trending-up" class="w-5 h-5 text-green-500"></i> Grafik Perkembangan Berat Badan
             </h2>
             <span class="text-xs text-zinc-400">30 Catatan Terakhir</span>
         </div>
@@ -34,7 +34,7 @@
     </div>
 
     <!-- Personal Records (PR) Hall of Fame -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-4 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-4">
         <div class="flex items-center justify-between">
             <div>
                 <h2 class="text-lg font-bold text-white flex items-center gap-2">
@@ -87,9 +87,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
         <!-- Form: Log Measurement (1 Col) -->
-        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl h-fit">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4 h-fit">
             <h2 class="text-base font-bold text-white flex items-center gap-2">
-                <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-400"></i> Catat Ukuran Hari Ini
+                <i data-lucide="plus-circle" class="w-4 h-4 text-green-500"></i> Catat Ukuran Hari Ini
             </h2>
 
             <form action="{{ route('progress.store') }}" method="POST" class="space-y-3">
@@ -98,25 +98,25 @@
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">Tanggal</label>
                     <input type="date" name="recorded_date" required value="{{ date('Y-m-d') }}"
-                           class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                           class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-green-500">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">Berat Badan (kg) *</label>
                     <input type="number" step="0.1" name="weight_kg" required placeholder="Contoh: 68.5"
-                           class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500 font-bold">
+                           class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-green-500 font-bold">
                 </div>
 
                 <div class="grid grid-cols-2 gap-2">
                     <div>
                         <label class="block text-[10px] uppercase text-zinc-400 mb-1">Body Fat (%)</label>
                         <input type="number" step="0.1" name="body_fat_percentage" placeholder="15.0"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-green-500">
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase text-zinc-400 mb-1">Pinggang (cm)</label>
                         <input type="number" step="0.5" name="waist_cm" placeholder="78"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-green-500">
                     </div>
                 </div>
 
@@ -124,29 +124,29 @@
                     <div>
                         <label class="block text-[10px] uppercase text-zinc-400 mb-1">Lingkar Dada (cm)</label>
                         <input type="number" step="0.5" name="chest_cm" placeholder="96"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-green-500">
                     </div>
                     <div>
                         <label class="block text-[10px] uppercase text-zinc-400 mb-1">Lingkar Lengan (cm)</label>
                         <input type="number" step="0.5" name="arms_cm" placeholder="34"
-                               class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                               class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-green-500">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1">Catatan</label>
                     <input type="text" name="notes" placeholder="Catatan kondisi fisik / pola makan..."
-                           class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+                           class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-green-500">
                 </div>
 
-                <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all mt-2">
+                <button type="submit" class="w-full py-2.5 px-4 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs transition-colors mt-2">
                     Simpan Catatan
                 </button>
             </form>
         </div>
 
         <!-- Measurement History Table (2 Cols) -->
-        <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800 rounded-3xl p-6 space-y-4 shadow-xl">
+        <div class="lg:col-span-2 bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4">
             <h2 class="text-base font-bold text-white flex items-center gap-2">
                 <i data-lucide="history" class="w-4 h-4 text-blue-400"></i> Riwayat Pengukuran Fisik
             </h2>
@@ -212,12 +212,12 @@
                         {
                             label: 'Berat Badan (kg)',
                             data: {!! json_encode($chartWeights) !!},
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderColor: '#16a34a',
+                            backgroundColor: 'rgba(22, 163, 74, 0.1)',
                             fill: true,
                             tension: 0.35,
                             pointRadius: 5,
-                            pointBackgroundColor: '#10b981',
+                            pointBackgroundColor: '#16a34a',
                             pointBorderColor: '#09090b',
                             pointBorderWidth: 2,
                             yAxisID: 'y'

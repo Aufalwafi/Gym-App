@@ -12,25 +12,25 @@
             <p class="text-zinc-400 text-xs sm:text-sm">Seluruh catatan log latihan gym dan volume beban yang telah Anda selesaikan.</p>
         </div>
 
-        <a href="{{ route('workouts.create') }}" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/20 transition-all hover:scale-105">
-            <i data-lucide="plus-circle" class="w-4 h-4"></i> Catat Sesi Baru
+        <a href="{{ route('workouts.create') }}" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs transition-colors">
+            <i data-lucide="plus" class="w-4 h-4"></i> Catat Sesi Baru
         </a>
     </div>
 
     <!-- Summary Stats Bar -->
     <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-        <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
             <span class="text-xs text-zinc-400 font-medium">Total Sesi Tercatat</span>
             <p class="text-2xl font-extrabold text-white mt-1">{{ $totalCompleted }}</p>
         </div>
-        <div class="bg-zinc-900/80 border border-zinc-800 rounded-xl p-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4">
             <span class="text-xs text-zinc-400 font-medium">Total Volume Terangkat</span>
             <p class="text-2xl font-extrabold text-white mt-1">{{ number_format($totalVolumeSum, 0, ',', '.') }} <span class="text-xs font-semibold text-zinc-500">kg</span></p>
         </div>
-        <div class="col-span-2 sm:col-span-1 bg-zinc-900/80 border border-zinc-800 rounded-xl p-4 flex items-center justify-between">
+        <div class="col-span-2 sm:col-span-1 bg-zinc-900 border border-zinc-800 rounded-xl p-4 flex items-center justify-between">
             <form action="{{ route('workouts.index') }}" method="GET" class="w-full flex items-center gap-2">
-                <input type="month" name="month" value="{{ request('month') }}" class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-zinc-200 focus:outline-none focus:border-emerald-500">
-                <button type="submit" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-semibold text-zinc-200">
+                <input type="month" name="month" value="{{ request('month') }}" class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-zinc-200 focus:outline-none focus:border-green-500">
+                <button type="submit" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-xs font-medium text-zinc-200">
                     Filter
                 </button>
             </form>
@@ -40,11 +40,11 @@
     <!-- Workout History List -->
     <div class="space-y-4">
         @forelse($sessions as $session)
-            <div class="bg-zinc-900/80 border border-zinc-800 hover:border-zinc-700/80 rounded-2xl p-5 transition-all shadow-md">
+            <div class="bg-zinc-900 border border-zinc-800 hover:border-zinc-700 rounded-xl p-5 transition-colors">
                 <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div class="space-y-2 flex-1">
                         <div class="flex flex-wrap items-center gap-2 text-xs">
-                            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+                            <span class="px-2.5 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 font-medium">
                                 {{ \Carbon\Carbon::parse($session->started_at)->translatedFormat('l, d F Y') }}
                             </span>
                             <span class="text-zinc-500">&bull;</span>
@@ -58,7 +58,7 @@
                         </div>
 
                         <h2 class="text-lg font-bold text-white">
-                            <a href="{{ route('workouts.show', $session->id) }}" class="hover:text-emerald-400 transition-colors">
+                            <a href="{{ route('workouts.show', $session->id) }}" class="hover:text-green-400 transition-colors">
                                 {{ $session->title }}
                             </a>
                         </h2>
@@ -87,13 +87,13 @@
                         </div>
 
                         <div class="flex items-center gap-2">
-                            <a href="{{ route('workouts.show', $session->id) }}" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-emerald-500 hover:text-zinc-950 text-emerald-400 text-xs font-semibold transition-colors">
+                            <a href="{{ route('workouts.show', $session->id) }}" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-green-600 hover:text-white text-zinc-300 text-xs font-medium transition-colors">
                                 Detail
                             </a>
                             <form action="{{ route('workouts.destroy', $session->id) }}" method="POST" onsubmit="return confirm('Hapus catatan sesi latihan ini?')">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="p-1.5 rounded-lg text-zinc-600 hover:text-rose-400 hover:bg-zinc-800 transition-colors" title="Hapus">
+                                <button type="submit" class="p-1.5 rounded-lg text-zinc-500 hover:text-rose-400 hover:bg-zinc-800 transition-colors" title="Hapus">
                                     <i data-lucide="trash-2" class="w-4 h-4"></i>
                                 </button>
                             </form>
@@ -102,10 +102,10 @@
                 </div>
             </div>
         @empty
-            <div class="bg-zinc-900/40 border border-dashed border-zinc-800 rounded-2xl p-12 text-center space-y-3">
+            <div class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-10 text-center space-y-3">
                 <i data-lucide="calendar" class="w-8 h-8 text-zinc-600 mx-auto"></i>
                 <p class="text-zinc-400 font-semibold text-sm">Belum ada catatan latihan pada filter ini</p>
-                <a href="{{ route('workouts.create') }}" class="inline-block px-4 py-2 rounded-xl bg-emerald-500 text-zinc-950 font-bold text-xs mt-2">
+                <a href="{{ route('workouts.create') }}" class="inline-block px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs mt-2 transition-colors">
                     Mulai Catat Sesi Latihan
                 </a>
             </div>

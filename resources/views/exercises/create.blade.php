@@ -13,19 +13,19 @@
         <p class="text-zinc-400 text-xs">Tambahkan variasi gerakan gym baru yang belum ada di katalog.</p>
     </div>
 
-    <form action="{{ route('exercises.store') }}" method="POST" class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 space-y-4 shadow-xl">
+    <form action="{{ route('exercises.store') }}" method="POST" class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 space-y-4">
         @csrf
 
         <div>
             <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Nama Gerakan</label>
             <input type="text" name="name" required placeholder="Contoh: Smith Machine Incline Press" value="{{ old('name') }}"
-                   class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500">
+                   class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-green-500">
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Kelompok Otot Utama</label>
-                <select name="exercise_category_id" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+                <select name="exercise_category_id" required class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-green-500">
                     @foreach($categories as $cat)
                         <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                     @endforeach
@@ -34,7 +34,7 @@
 
             <div>
                 <label class="block text-xs font-semibold uppercase tracking-wider text-zinc-400 mb-1.5">Peralatan / Alat</label>
-                <select name="equipment" required class="w-full bg-zinc-950 border border-zinc-800 rounded-xl px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-emerald-500">
+                <select name="equipment" required class="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-2.5 text-sm text-zinc-200 focus:outline-none focus:border-green-500">
                     <option value="barbell">Barbell</option>
                     <option value="dumbbell">Dumbbell</option>
                     <option value="cable">Cable / Katrol</option>
@@ -75,10 +75,10 @@
         </div>
 
         <div class="pt-2 flex items-center justify-end gap-3">
-            <a href="{{ route('exercises.index') }}" class="px-5 py-2.5 rounded-xl bg-zinc-800 text-zinc-300 font-semibold text-xs">
+            <a href="{{ route('exercises.index') }}" class="px-5 py-2.5 rounded-lg bg-zinc-800 text-zinc-300 font-medium text-xs">
                 Batal
             </a>
-            <button type="submit" class="px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all">
+            <button type="submit" class="px-5 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs transition-colors">
                 Simpan Gerakan
             </button>
         </div>

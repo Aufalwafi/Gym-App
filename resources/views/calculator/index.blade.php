@@ -12,9 +12,9 @@
     </div>
 
     <!-- Section 1: BMI Calculator -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6">
         <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold">
+            <div class="w-10 h-10 rounded-lg bg-green-500/10 text-green-500 flex items-center justify-center font-bold">
                 <i data-lucide="scale" class="w-5 h-5"></i>
             </div>
             <div>
@@ -32,9 +32,9 @@
                         <span class="text-white font-mono" x-text="height + ' cm'"></span>
                     </div>
                     <input type="range" min="120" max="220" step="0.5" x-model.number="height"
-                           class="w-full accent-emerald-500 bg-zinc-950 rounded-lg cursor-pointer">
+                           class="w-full accent-green-600 bg-zinc-950 rounded-lg cursor-pointer">
                     <input type="number" step="0.5" x-model.number="height"
-                           class="w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white">
+                           class="w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white">
                 </div>
 
                 <div>
@@ -43,21 +43,21 @@
                         <span class="text-white font-mono" x-text="weight + ' kg'"></span>
                     </div>
                     <input type="range" min="30" max="180" step="0.5" x-model.number="weight"
-                           class="w-full accent-emerald-500 bg-zinc-950 rounded-lg cursor-pointer">
+                           class="w-full accent-green-600 bg-zinc-950 rounded-lg cursor-pointer">
                     <input type="number" step="0.5" x-model.number="weight"
-                           class="w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-1.5 text-xs text-white">
+                           class="w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-1.5 text-xs text-white">
                 </div>
             </div>
 
             <!-- BMI Result Card -->
-            <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-6 text-center space-y-3">
+            <div class="bg-zinc-950 border border-zinc-800 rounded-xl p-6 text-center space-y-3">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-500 block">Skor BMI Anda</span>
                 <div class="text-4xl font-extrabold text-white font-mono" x-text="bmiScore">22.5</div>
                 
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold"
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded text-xs font-medium"
                      :class="{
                          'bg-amber-500/10 text-amber-400 border border-amber-500/20': bmiCategory === 'Underweight',
-                         'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20': bmiCategory === 'Normal (Ideal)',
+                         'bg-green-500/10 text-green-400 border border-green-500/20': bmiCategory === 'Normal (Ideal)',
                          'bg-amber-500/10 text-amber-400 border border-amber-500/20': bmiCategory === 'Overweight',
                          'bg-rose-500/10 text-rose-400 border border-rose-500/20': bmiCategory === 'Obesitas'
                      }"
@@ -73,7 +73,7 @@
     </div>
 
     <!-- Section 2: BMR & TDEE + Macro Nutrition Calculator -->
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-xl">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-6 sm:p-8 space-y-6">
         <div class="flex items-center gap-3 border-b border-zinc-800 pb-4">
             <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center font-bold">
                 <i data-lucide="utensils" class="w-5 h-5"></i>
@@ -189,7 +189,7 @@
             </div>
 
             <div class="pt-2 flex justify-end">
-                <button type="submit" class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-zinc-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition-all">
+                <button type="submit" class="px-5 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs transition-colors">
                     Simpan Target Ini ke Profil Saya
                 </button>
             </div>

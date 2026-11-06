@@ -21,16 +21,16 @@
         </div>
 
         <!-- Floating / Sticky Rest Timer Widget -->
-        <div class="bg-zinc-900 border border-zinc-700/80 rounded-2xl p-3 shadow-xl flex items-center gap-4">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-3 flex items-center gap-4">
             <div>
                 <div class="text-[10px] font-bold uppercase tracking-wider text-zinc-400">Rest Timer</div>
-                <div class="text-2xl font-mono font-extrabold" :class="timerRunning ? 'text-emerald-400 animate-pulse' : 'text-white'" x-text="formatTime(timerSeconds)">01:30</div>
+                <div class="text-2xl font-mono font-bold" :class="timerRunning ? 'text-green-500 animate-pulse' : 'text-white'" x-text="formatTime(timerSeconds)">01:30</div>
             </div>
             <div class="flex items-center gap-1.5">
                 <button type="button" @click="startTimer(60)" class="px-2 py-1 text-xs rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold">60s</button>
                 <button type="button" @click="startTimer(90)" class="px-2 py-1 text-xs rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold">90s</button>
                 <button type="button" @click="startTimer(120)" class="px-2 py-1 text-xs rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold">120s</button>
-                <button type="button" @click="toggleTimer()" class="w-8 h-8 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold flex items-center justify-center">
+                <button type="button" @click="toggleTimer()" class="w-8 h-8 rounded-lg bg-green-600 hover:bg-green-700 text-white font-bold flex items-center justify-center">
                     <i :data-lucide="timerRunning ? 'pause' : 'play'" class="w-4 h-4 fill-current"></i>
                 </button>
                 <button type="button" @click="resetTimer()" class="w-8 h-8 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center">
@@ -88,30 +88,30 @@
         <div class="space-y-4">
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i data-lucide="list-checks" class="w-5 h-5 text-emerald-400"></i> Gerakan & Set Latihan
+                    <i data-lucide="list-checks" class="w-5 h-5 text-green-500"></i> Gerakan & Set Latihan
                 </h2>
-                <button type="button" @click="openExerciseModal = true" class="px-3.5 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-emerald-400 font-bold text-xs flex items-center gap-1.5 border border-zinc-700 transition-colors">
+                <button type="button" @click="openExerciseModal = true" class="px-3.5 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-green-500 font-medium text-xs flex items-center gap-1.5 border border-zinc-700 transition-colors">
                     <i data-lucide="plus" class="w-4 h-4"></i> Tambah Gerakan
                 </button>
             </div>
 
             <!-- Empty State -->
             <template x-if="exercises.length === 0">
-                <div class="bg-zinc-900/40 border border-dashed border-zinc-800 rounded-2xl p-12 text-center space-y-3">
-                    <div class="w-12 h-12 rounded-xl bg-zinc-800/80 text-zinc-400 flex items-center justify-center mx-auto">
+                <div class="bg-zinc-900 border border-dashed border-zinc-800 rounded-xl p-10 text-center space-y-3">
+                    <div class="w-12 h-12 rounded-xl bg-zinc-800 text-zinc-400 flex items-center justify-center mx-auto">
                         <i data-lucide="dumbbell" class="w-6 h-6"></i>
                     </div>
                     <p class="text-zinc-300 font-semibold text-sm">Belum ada gerakan latihan yang ditambahkan</p>
                     <p class="text-zinc-500 text-xs">Klik tombol di bawah untuk memilih gerakan dari katalog gym.</p>
-                    <button type="button" @click="openExerciseModal = true" class="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs inline-flex items-center gap-2 transition-all">
-                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Pilih Gerakan Latihan
+                    <button type="button" @click="openExerciseModal = true" class="px-4 py-2 rounded-lg bg-green-600 hover:bg-green-700 text-white font-medium text-xs inline-flex items-center gap-2 transition-colors">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Pilih Gerakan Latihan
                     </button>
                 </div>
             </template>
 
             <!-- Exercise Cards Loop -->
             <template x-for="(ex, exIndex) in exercises" :key="exIndex">
-                <div class="bg-zinc-900/90 border border-zinc-800 rounded-2xl p-4 sm:p-5 space-y-3 shadow-lg">
+                <div class="bg-zinc-900 border border-zinc-800 rounded-xl p-4 sm:p-5 space-y-3">
                     <!-- Exercise Header -->
                     <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
                         <div class="flex items-center gap-3">
@@ -206,9 +206,9 @@
                     <!-- Bottom Exercise Actions -->
                     <div class="flex items-center justify-between pt-2">
                         <button type="button" @click="addSet(exIndex)" class="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs flex items-center gap-1.5 transition-colors">
-                            <i data-lucide="plus" class="w-3.5 h-3.5 text-emerald-400"></i> Tambah Set
+                            <i data-lucide="plus" class="w-3.5 h-3.5 text-green-500"></i> Tambah Set
                         </button>
-                        <button type="button" @click="startTimer(ex.rest_seconds || 90)" class="text-xs text-zinc-400 hover:text-emerald-400 flex items-center gap-1">
+                        <button type="button" @click="startTimer(ex.rest_seconds || 90)" class="text-xs text-zinc-400 hover:text-green-400 flex items-center gap-1">
                             <i data-lucide="timer" class="w-3.5 h-3.5"></i> Mulai Istirahat (<span x-text="ex.rest_seconds || 90"></span>s)
                         </button>
                     </div>
@@ -218,22 +218,22 @@
 
         <!-- Add Exercise & Finish Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-zinc-800">
-            <button type="button" @click="openExerciseModal = true" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-zinc-900 border border-zinc-700 hover:border-zinc-600 text-white font-bold text-sm flex items-center justify-center gap-2 transition-all">
-                <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-400"></i> Tambah Gerakan Lain
+            <button type="button" @click="openExerciseModal = true" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700 hover:border-zinc-600 text-white font-medium text-sm flex items-center justify-center gap-2 transition-colors">
+                <i data-lucide="plus" class="w-4 h-4 text-green-500"></i> Tambah Gerakan Lain
             </button>
 
-            <button type="submit" :disabled="exercises.length === 0" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 disabled:opacity-50 disabled:cursor-not-allowed text-zinc-950 font-black text-sm shadow-xl shadow-emerald-500/25 transition-all flex items-center justify-center gap-2">
-                <i data-lucide="check-check" class="w-5 h-5"></i> Simpan & Selesaikan Latihan
+            <button type="submit" :disabled="exercises.length === 0" class="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm transition-colors flex items-center justify-center gap-2">
+                <i data-lucide="check" class="w-4 h-4"></i> Simpan Sesi Latihan
             </button>
         </div>
     </form>
 
     <!-- Modal: Select Exercise from Catalog -->
-    <div x-show="openExerciseModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+    <div x-show="openExerciseModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
          x-transition:enter="transition ease-out duration-200"
          x-transition:enter-start="opacity-0"
          x-transition:enter-end="opacity-100">
-        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl w-full max-w-xl max-h-[85vh] flex flex-col shadow-2xl" @click.outside="openExerciseModal = false">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl w-full max-w-xl max-h-[85vh] flex flex-col shadow-xl" @click.outside="openExerciseModal = false">
             <!-- Modal Header -->
             <div class="p-5 border-b border-zinc-800 flex items-center justify-between">
                 <div>
@@ -246,26 +246,26 @@
             </div>
 
             <!-- Search & Filter -->
-            <div class="p-4 border-b border-zinc-800 bg-zinc-950/40">
+            <div class="p-4 border-b border-zinc-800 bg-zinc-950">
                 <div class="relative">
                     <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-3 text-zinc-500"></i>
                     <input type="text" x-model="searchQuery" placeholder="Cari gerakan (contoh: Bench Press, Squat, Curl)..."
-                           class="w-full bg-zinc-900 border border-zinc-800 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-emerald-500">
+                           class="w-full bg-zinc-900 border border-zinc-800 rounded-lg pl-10 pr-4 py-2 text-xs text-white placeholder-zinc-500 focus:outline-none focus:border-green-500">
                 </div>
             </div>
 
             <!-- Exercises List -->
-            <div class="overflow-y-auto p-4 space-y-2 flex-1 divide-y divide-zinc-800/40">
+            <div class="overflow-y-auto p-4 space-y-2 flex-1 divide-y divide-zinc-800">
                 <template x-for="item in filteredCatalog" :key="item.id">
-                    <div class="pt-2 pb-2 flex items-center justify-between hover:bg-zinc-800/50 p-2 rounded-xl transition-colors cursor-pointer" @click="addExerciseFromCatalog(item)">
+                    <div class="pt-2 pb-2 flex items-center justify-between hover:bg-zinc-800/50 p-2 rounded-lg transition-colors cursor-pointer" @click="addExerciseFromCatalog(item)">
                         <div>
                             <h4 class="font-bold text-white text-sm" x-text="item.name"></h4>
                             <p class="text-[11px] text-zinc-400">
-                                <span class="text-emerald-400" x-text="item.category ? item.category.name : ''"></span> &bull; 
+                                <span class="text-green-500" x-text="item.category ? item.category.name : ''"></span> &bull; 
                                 <span class="capitalize" x-text="item.equipment"></span>
                             </p>
                         </div>
-                        <button type="button" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500 hover:text-zinc-950 text-emerald-400 text-xs font-bold transition-all">
+                        <button type="button" class="px-3 py-1.5 rounded-lg bg-green-600 hover:bg-green-700 text-white text-xs font-medium transition-colors">
                             Pilih
                         </button>
                     </div>
