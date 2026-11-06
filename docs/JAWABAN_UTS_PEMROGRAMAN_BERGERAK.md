@@ -82,9 +82,17 @@ Berdasarkan riset Steven Hoober mengenai kebiasaan pengguna perangkat bergerak (
 * **Warna Aksen Solid Emerald Green (`#16a34a` / Green-600)**: Warna hijau solid melambangkan energi, stamina, kesuksesan pencapaian target, dan mudah diidentifikasi sekilas pandang.
 * **Penghindaran Efek Berat (*Zero Glassmorphism / No Blur*)**: Efek blur latar belakang (*backdrop-blur*) ditiadakan agar beban pemrosesan *raster rendering* GPU smartphone tetap minimal, menjamin *frame rate* stabil 60–120 FPS bahkan pada perangkat *smartphone entry-level*.
 
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Halaman Utama / Dashboard Mobile FitTrack]**  
+> *(Petunjuk Pengambilan: Buka browser smartphone atau gunakan Chrome DevTools dengan Mode Mobile Responsive ukuran iPhone/Pixel. Screenshot halaman Dashboard `http://127.0.0.1:8000/dashboard` yang memperlihatkan sapaan nama pengguna, kartu ringkasan volume mingguan, dan bilah Bottom Navigation Bar di bagian bawah layar).*
+
 ### 1.4. Kontrol Input Mobile & Kecepatan Input Data
 * Input beban dan repetisi dilengkapi atribut `type="number"`, `inputmode="decimal"`, dan `step="any"` sehingga *on-screen keyboard* smartphone langsung memunculkan tombol papan numerik besar (*numeric keypad*), bukan papan tombol alfabetik.
 * Terdapat fitur duplikasi otomatis nilai beban dan repetisi dari set sebelumnya (*auto-carry forward*) untuk memangkas waktu ketik saat latihan.
+
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Form Catat Latihan Aktif (Mobile Workout Logger)]**  
+> *(Petunjuk Pengambilan: Screenshot halaman pencatatan latihan aktif `http://127.0.0.1:8000/workouts/create`. Perlihatkan daftar baris set latihan dengan kolom Beban kg, Reps, RPE, tombol '+ Tambah Set', dan papan ketik angka numerik smartphone yang aktif).*
 
 ---
 
@@ -138,11 +146,19 @@ Bilah navigasi bawah dipasang melayang secara *fixed* di bagian dasar layar (`fi
 4. **Program (Routines)**: Template latihan terstruktur (seperti Push, Pull, Legs, Upper, Lower) yang dapat diaktifkan dalam satu klik menjadi sesi langsung.
 5. **Progres & Profil**: Grafik perkembangan beban latihan, pengukuran lingkar/berat badan mingguan, serta alat hitung ilmiah (*1RM Calculator & TDEE Calculator*).
 
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Menu Program Latihan (Routines)]**  
+> *(Petunjuk Pengambilan: Screenshot halaman Program Latihan `http://127.0.0.1:8000/routines` yang menampilkan kartu-kartu template program latihan terstruktur seperti Push Day, Pull Day, Leg Day beserta tombol 'Mulai Latihan Ini').*
+
 ### 2.2. Pola Interaksi Sesi Latihan Aktif (Zero-Page Reload via Alpine.js)
 Selama sesi latihan berjalan, aplikasi tidak melakukan *page reload* penuh untuk setiap penambahan set atau penghapusan gerakan. Dengan memanfaatkan reaktivitas *Alpine.js*, manipulasi DOM terjadi di sisi klien (*client-side state*):
 * Menambah set baru: `addSet(exIndex)` menduplikasi beban set sebelumnya secara reaktif.
 * Menghitung prediksi kekuatan: `calculate1rm(set)` mengalkulasi formula Epley secara *real-time* saat angka diketik.
 * Membuka modal katalog latihan tanpa menghentikan *rest timer* yang sedang berdetak di latar belakang.
+
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Modal Katalog Pemilihan Gerakan Latihan]**  
+> *(Petunjuk Pengambilan: Pada halaman form latihan `http://127.0.0.1:8000/workouts/create`, tekan tombol '+ Tambah Latihan'. Screenshot jendela modal popup yang muncul di layar, perlihatkan kolom pencarian gerakan dan filter kategori otot seperti Dada, Punggung, Kaki, dll).*
 
 ---
 
@@ -221,6 +237,10 @@ $validated = $request->validate([
 ```
 Semua mutasi penyimpanan dibungkus dalam `DB::transaction()` untuk memastikan jika ada satu data set yang gagal ditulis, sistem otomatis melakukan *rollback*, sehingga tidak terjadi *orphaned records*.
 
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Skema Database / Riwayat Sesi Latihan]**  
+> *(Petunjuk Pengambilan: Screenshot halaman Riwayat Sesi Latihan `http://127.0.0.1:8000/workouts` yang membuktikan bahwa data sesi dan set latihan tersimpan rapi dan dapat ditampilkan kembali dari database, ATAU screenshot terminal `php artisan migrate:status`).*
+
 ### 3.4. Logika Bisnis & Algoritma Komputasi Bergerak
 1. **Algoritma Estimasi One-Rep Max (Formula Epley)**:
    Digunakan untuk memprediksi kekuatan beban maksimal 1 repetisi pengguna secara aman tanpa risiko cedera:
@@ -232,6 +252,10 @@ Semua mutasi penyimpanan dibungkus dalam `DB::transaction()` untuk memastikan ji
    $$\text{BMR (Pria)} = (10 \times \text{BB}) + (6.25 \times \text{TB}) - (5 \times \text{Usia}) + 5$$
    $$\text{BMR (Wanita)} = (10 \times \text{BB}) + (6.25 \times \text{TB}) - (5 \times \text{Usia}) - 161$$
    $$\text{TDEE} = \text{BMR} \times \text{Faktor Aktivitas Fisik}$$
+
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Kalkulator 1RM & TDEE pada Menu Progres]**  
+> *(Petunjuk Pengambilan: Screenshot halaman Progres `http://127.0.0.1:8000/progress`. Perlihatkan kartu Kalkulator 1RM dengan hasil estimasi Epley dan Kalkulator Kebutuhan Kalori Harian TDEE berbasis metabolisme).*
 
 ---
 
@@ -283,6 +307,10 @@ playTimerDing() {
 }
 ```
 * **Hasil Pengujian**: Saat penghitung waktu istirahat (*rest timer*) mencapai angka `00:00`, ponsel bergetar dengan pola khas 3 ketukan bertenaga sehingga atlet langsung mengetahui saatnya memulai set berikutnya tanpa harus menatap layar secara terus-menerus.
+
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Tampilan Rest Timer (Stopwatch Istirahat) pada Layar Latihan]**  
+> *(Petunjuk Pengambilan: Screenshot komponen Rest Timer di bagian atas layar form latihan `http://127.0.0.1:8000/workouts/create` saat waktu istirahat sedang berjalan mundur, misal 01:25 beserta tombol Pause/Reset).*
 
 ### 4.2. Interaksi Hardware Speaker (Web Audio API Synthesizer)
 * **Problem**: Mengunduh file aset audio eksternal (`.mp3` atau `.wav`) membutuhkan koneksi data internet tambahan, berisiko gagal diputar jika ponsel berada dalam mode *offline* atau sinyal di basement gym lemah.
@@ -344,6 +372,10 @@ init() {
 ### 4.4. Interaksi Layar Sentuh Kapasitif & Sensor Orientasi
 * **Pencegahan Zoom Tak Disengaja**: Viewport mobile dikunci terhadap pembesaran ganda (*double-tap zoom lock*) agar ketukan berulang pada tombol checklist set tidak menggeser tampilan.
 * **Kontrol Papan Ketik Virtual**: Penggunaan atribut `inputmode="decimal"` memanggil *hardware driver keyboard* angka yang memudahkan pengetikan beban berformat desimal (contoh: 12.5 kg).
+
+> [!TIP]
+> 📸 **[TEMPATKAN SCREENSHOT DI SINI: Bukti Kode Interaksi Hardware pada VS Code (create.blade.php)]**  
+> *(Petunjuk Pengambilan: Screenshot jendela editor VS Code Anda pada berkas `resources/views/workouts/create.blade.php`. Arahkan kursor pada baris fungsi `requestWakeLock()`, `playTimerDing()`, `navigator.vibrate`, dan `AudioContext` untuk membuktikan kepada dosen bahwa interaksi hardware benar-benar terprogram di dalam kode).*
 
 ---
 
